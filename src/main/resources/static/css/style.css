@@ -1,0 +1,149 @@
+body{
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+nav{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+footer{
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #fff;
+    background-color: #D9230F;
+}
+
+.footer-index{
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #fff;
+    background-color: #D9230F;
+}
+
+.container{
+    max-width: 95%;
+}
+
+.table-div, .about, .contact{
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.about{
+
+}
+
+
+.home {
+    background-image: url("../img/Photo\ by\ bruce\ mars\ from\ Pexels.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    height: 100%;
+}
+
+.overlay{
+    margin: -64px -32px -64px -32px;
+    width: 110%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+hr{
+    border-top: 1px solid rgba(255,255,255, 0.5) !important;
+}
+
+.fa, .fas{
+    color: #D9230F;
+}
+
+.fa-check-double{
+    color: #66cc44;
+}
+
+.active .fas, .btn .fas{
+    color: #fff;
+}
+
+.text{
+    color: #fff;
+    padding: 64px 32px;
+    min-height: 35vw;
+    font-weight: 900;
+    font-family: 'Amatic SC', cursive;
+}
+
+.btn-admin{
+    font-size: 20px;
+    width: max-content;
+}
+
+.btn-lg{
+    font-size: 24px !important;
+    margin: 5px;
+}
+
+.form-control{
+    font-size: 22px;
+}
+
+.lead{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.logo{
+    max-width: 70px;
+    margin: 10px;
+}
+
+.card-title{
+    font-size: 30px;
+}
+
+nav li{
+    padding: 0 5px;
+}
+
+nav li a, nav li form{
+    width: 140px;
+    padding: 25px 10px 25px 10px !important;
+}
+
+nav li a:hover{
+    background-color:rgba(255,255,255, 0.7);
+    border-radius: 10px;
+    font-size: 28px;
+    color: #D9230F !important;
+}
+
+ul li{
+    list-style: none;
+    text-align: justify;
+}
+
+.img-about{
+    max-height: 500px;
+}
+
+.wellcome{
+    height: 25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.center{
+    margin:0;
+}

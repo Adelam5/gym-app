@@ -1,0 +1,147 @@
+
+<!doctype html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gym App · Employees</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Fondamento|Righteous&display=swap" rel="stylesheet"> 
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="/home_admin"><img class="logo" src="img/logo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/home_admin">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/employees">Employees <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/packages">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+          <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2 search-form" type="text" placeholder="Search">
+          </form>
+        <form class="form-inline my-2 my-lg-0">
+          <a class="btn btn-secondary btn-lg" href="/index">Sign Out</a>
+        </form>
+      </div>
+    </nav>
+
+<br><br>
+
+<section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="/dashboard" class="list-group-item list-group-item-action">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="/users" class="list-group-item list-group-item-action"><i class="fas fa-users-cog"></i> Manage Users</a>
+                <a href="/employees" class="list-group-item list-group-item-action active"><i class="fas fa-address-card"></i> Manage Employees</a>
+                <a href="/packages" class="list-group-item list-group-item-action"><i class="fas fa-clipboard-list"></i> Manage Packages</a>
+              </div>
+        </div>
+        <div class="col-md-9 table-div">
+            <form action="/employees/processForm" method="post">
+              <div class="row">
+                      <div class="col-md-6">
+                          <h1 class="page-header"><i class="fas fa-address-card"></i> Employees</h1>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="btn-group actions" role="group" aria-label="Basic example">
+                              <button type="submit" name="new" value="new" class="btn btn-admin btn-primary"><i class="fas fa-plus"></i>  New</button>
+                              <button type="submit" name="edit" value="edit" class="btn btn-admin btn-primary"><i class="fas fa-edit"></i> Edit</button>
+                              <button type="submit" name="delete" value="delete" onclick="return confirm('Are you sure you want to delete selected employee(s)?')" class="btn btn-admin btn-primary"><i class="fas fa-trash-alt"></i> Delete</button>
+                          </div>
+                      </div>
+                  </div>
+                  <hr>
+                  <h3>Employees</h3>
+                  <table class="table table-striped">
+                      <tr>
+                        <th><input type="checkbox" id="checkBoxAll"/></th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Position</th>
+                      </tr>
+                      <tr th:each="employee : ${listEmployees}">
+                        <th><input type="checkbox" class="chkCheckBoxId" th:value="${employee.id}" name="id"></th>
+                        <td th:text="${employee.name}">Jane Doe</td>
+                        <td th:text="${employee.age}">31</td>
+                        <td th:text="${employee.address}">Moon Lane 9292</td>
+                        <td th:text="${employee.email}">janedoe@mail.com</td>
+                        <td th:text="${employee.phone}">099 838 8281</td>
+                        <td th:text="${employee.position_id}">Personal Trainer</td>
+                      </tr>
+                    </table>
+            </form>
+          <hr>        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </br></br></br>
+
+    <footer>
+      <div>
+        <p>The Gym &copy; Design By Adela</p>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/bootstrap.js"></script>
+
+    <script>
+        var $rows = $('table tr');
+        $('.search-form').keyup(function(){
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+            $rows.show().filter(function(){
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#checkBoxAll').click(function () {
+                if ($(this).is(":checked"))
+                    $('.chkCheckBoxId').prop('checked', true);
+                else
+                    $('.chkCheckBoxId').prop('checked', false);
+            });
+        });
+    </script>
+
+  </body>
+</html>
